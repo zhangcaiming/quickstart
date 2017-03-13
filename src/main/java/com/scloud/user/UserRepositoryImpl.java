@@ -1,10 +1,13 @@
 package com.scloud.user;
 
 
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+@Repository("userRepositoryImpl")
 public class UserRepositoryImpl implements UserSweeper {
 
     @PersistenceContext
