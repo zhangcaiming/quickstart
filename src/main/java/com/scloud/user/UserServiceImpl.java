@@ -5,6 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
@@ -36,5 +38,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public User add(User user) {
         return userRepository.save(user);
+    }
+
+    // 批量新增
+    @Override
+    public void batchInsert(List<User> users) {
+        userRepository.save(users);
+    }
+
+    // 批量更新
+    @Override
+    public void batchUpdate(List<User> users) {
+        userRepository.save(users);
+    }
+
+    // 批量删除
+    @Override
+    public void batchDel(List<User> users) {
+        userRepository.deleteInBatch(users);
     }
 }
