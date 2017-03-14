@@ -1,5 +1,6 @@
 .gradle
 /build/
+classes/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
@@ -23,3 +24,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+src/main/webapp/
