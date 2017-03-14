@@ -1,20 +1,34 @@
 package com.scloud.user;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
-public interface UserService {
+public class UserService {
 
-    Page<User> getUserList();
+    @Autowired
+    private UserRepository userRepository;
 
-    User getUserById(Long id);
+    public Page<User> getUserList() {
+        return userRepository.findAll(new PageRequest(0,10));
+    }
 
-    User update(User user);
+    public User getUserById(Long id) {
+        return userRepository.findOne(id);
+    }
 
-    void delete(Long id);
+    public User update(User user) {
+        // user对象的id在数据库中存在，就更新
+        return userRepository.save(user);
+    }
 
-    User add(User user);
+    public void delete(Long id) {
+        userRepository.delete(id);
+    }
 
-
+    public User add(User user) {
+        return userRepository.save(user);
+    }
 
 }
