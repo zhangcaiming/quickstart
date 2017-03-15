@@ -23,8 +23,13 @@ public class UserController {
 
     // 更新user对象的全部信息用 PUT 更新部分信息用PATCH
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-    public User update(@ModelAttribute("user") User user){
-       return userService.update(user);
+    public User update(@PathVariable("id") Long id,@ModelAttribute User user){
+        User u = userService.getUserById(id);
+        u.setUserName(user.getUserName());
+        u.setPassword(user.getPassword());
+        u.setEmail(user.getEmail());
+        u.setIsDelete(user.getIsDelete());
+       return userService.update(u);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
@@ -34,7 +39,7 @@ public class UserController {
 
     //新建一个User对象用 POST
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public User addUser(@RequestParam("user") User user){
+    public User addUser(@ModelAttribute User user){
        return userService.add(user);
     }
 
