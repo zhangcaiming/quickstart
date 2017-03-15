@@ -23,7 +23,7 @@ public class UserController {
 
     // 更新user对象的全部信息用 PUT 更新部分信息用PATCH
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-    public User update(@RequestParam("user") User user){
+    public User update(@ModelAttribute("user") User user){
        return userService.update(user);
     }
 
