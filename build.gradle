@@ -8,12 +8,16 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+    dependencies {
+        classpath "gradle.plugin.com.boxfuse.client:flyway-release:4.1.2"
+    }
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
+apply plugin: 'org.flywaydb.flyway'
+apply plugin: 'jacoco'
 
 repositories {
 	maven { url "http://maven.aliyun.com/nexus/content/groups/public/"}
@@ -24,10 +28,40 @@ war {
 	version = '0.0.1-SNAPSHOT'
 }
 
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+
+test {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+//        classDumpDir = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+
 sourceCompatibility = 1.8
 
 configurations {
 	providedRuntime
+}
+
+flyway {
+    driver = 'com.mysql.jdbc.Driver'
+    url = 'jdbc:mysql://127.0.0.1:3306/quickstart'
+    user = 'root'
+    password = 'root'
+    schemas = ['quickstart']
+    table = 'schema_history'
 }
 
 dependencies {
@@ -35,6 +69,8 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.flywaydb:flyway-core:4.1.2')
+    compile('com.google.guava:guava:21.0')
 	runtime('mysql:mysql-connector-java')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
