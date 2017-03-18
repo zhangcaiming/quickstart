@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -24,9 +23,6 @@ public class User {
 
     @JsonIgnore
     private Integer isDelete;
-
-    public User() {
-    }
 
     public User(String userName, String nickName, String password, String address, String phone, String email) {
         this.userName = userName;
