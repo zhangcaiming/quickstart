@@ -24,15 +24,6 @@ public class User {
     @JsonIgnore
     private Integer isDelete;
 
-    public User(String userName, String nickName, String password, String address, String phone, String email) {
-        this.userName = userName;
-        this.nickName = nickName;
-        this.password = password;
-        this.address = address;
-        this.phone = phone;
-        this.email = email;
-    }
-
     public String getUserName() {
         return userName;
     }
