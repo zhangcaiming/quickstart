@@ -22,10 +22,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/quickstart?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 ---
 spring:
   profiles:
@@ -34,10 +30,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/quickstart?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 ---
 spring:
   profiles:
@@ -46,10 +38,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/quickstart?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 ---
 spring:
   profiles:
@@ -58,8 +46,4 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/quickstart?useUnicode=true&characterEncoding=utf-8
     username: root
     password: root
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
 flyway: false
