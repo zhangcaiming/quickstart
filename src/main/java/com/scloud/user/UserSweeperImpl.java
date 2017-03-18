@@ -7,8 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-@Repository("userRepositoryImpl")
-public class UserRepositoryImpl implements UserSweeper {
+@Repository("userSweeper")
+public class UserSweeperImpl implements UserSweeper {
 
     @PersistenceContext
     private EntityManager em;

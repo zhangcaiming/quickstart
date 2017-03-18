@@ -1,5 +1,8 @@
 package com.scloud.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +12,8 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private Long id;
     private String userName;
     private String nickName;
@@ -17,6 +21,8 @@ public class User {
     private String address;
     private String phone;
     private String email;
+
+    @JsonIgnore
     private Integer isDelete;
 
     public User() {

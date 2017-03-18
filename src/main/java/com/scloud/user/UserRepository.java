@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  */
 public interface UserRepository extends JpaRepository<User,Long>,UserSweeper{
-
+    User getByNickName(String nickName);
 }
