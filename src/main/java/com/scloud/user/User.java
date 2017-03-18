@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Long id;
+    private String id;
     private String userName;
     private String nickName;
     private String password;
@@ -48,11 +48,11 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
